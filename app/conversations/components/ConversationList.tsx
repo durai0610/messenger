@@ -104,23 +104,32 @@ const ConversationList: React.FC<ConversationListProps> = ({
           isOpen ? "hidden" : "block w-full left-0"
         )}
       >
-        <div className="px-5 ">
-          <div className="flex justify-between mb-4 pt-4">
-            <div className="text-2xl font-bold text-neutral-800">Messages</div>
-            <div
-              onClick={() => setIsModalOpen(true)}
-              className="rounded-full p-2 bg-gray-100 text-gray-600 hover:opacity-75 transition cursor-pointer"
-            >
-              <MdOutlineGroupAdd size={20} />
+        <div className="px-5">
+          {/* Top header container with underline */}
+          <div className="pt-4 pb-3 mb-4 border-b border-gray-300">
+            <div className="flex justify-between items-center">
+              <div className="text-2xl font-bold text-neutral-800">
+                Messages
+              </div>
+              <div
+                onClick={() => setIsModalOpen(true)}
+                className="rounded-full p-2 bg-gray-100 text-gray-600 hover:opacity-75 transition cursor-pointer"
+              >
+                <MdOutlineGroupAdd size={20} />
+              </div>
             </div>
           </div>
-          {items.map((item) => (
-            <ConversationBox
-              key={item.id}
-              data={item}
-              selected={conversationId === item.id}
-            />
-          ))}
+
+          {/* Conversation list */}
+          <div className="space-y-2">
+            {items.map((item) => (
+              <ConversationBox
+                key={item.id}
+                data={item}
+                selected={conversationId === item.id}
+              />
+            ))}
+          </div>
         </div>
       </aside>
     </>
